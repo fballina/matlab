@@ -1,7 +1,0 @@
-function [ output_args ] = identity( input_args )
-% Creates a square identity matrix, which is a matrix whose
-%
-
-
-end
-
