@@ -1,9 +1,22 @@
 function [out] = roman(s)
     if length(s) >= 3
-        if length(unique(s)) == length(s) - 3 
-           out = uint8(0);
-           return
+        
+        oldchar = '0';
+        c = 1; 
+        for i = 1:length(s)
+            char = s(i);
+            if char == oldchar
+                c = c + 1; 
+            else
+                c = 1; 
+            end
+            if c > 3
+                out = uint8(0);
+                return
+            end
+            oldchar = char; 
         end
+        
         x = regexp(s, 'IV|IX|XL|XC|CD|CM');
         if any(x == 1)
             out = uint8(0);
@@ -61,61 +74,72 @@ function [out] = roman(s)
         s(rm(i)-k) = []; 
         k = 2*i;
     end
-    
+      
     inc = 1000; 
-    
+    inc_old = 1000; 
     for i = 1:length(s)
-        
-        inc_old = inc; 
-        out_old = out; 
+   
         if s(i) == 'I'
             if 1 < min
                 out = uint8(0);
                 return
-            end  
+            end
+            inc = 1; 
             out = out + 1;
         elseif s(i) == 'V'
             if 5 < min
                 out = uint8(0);
                 return
             end  
+            inc = 5; 
             out = out + 5;
         elseif s(i) == 'X'
             if 10 < min
                 out = uint8(0);
                 return
             end  
+            inc = 10; 
             out = out + 10; 
         elseif s(i) == 'L'
             if 50 < min
                 out = uint8(0);
                 return
             end  
+            inc = 50; 
             out = out + 50; 
         elseif s(i) == 'C'
             if 100 < min
                 out = uint8(0);
                 return
             end  
+            inc = 100; 
             out = out + 100;
         elseif s(i) == 'D'
             if 500 < min
                 out = uint8(0);
                 return
             end  
+            inc = 500; 
             out = out + 500; 
         elseif s(i) == 'M'
             if 1000 < min
                 out = uint8(0);
                 return
             end  
+            inc = 1000; 
             out = out + 1000; 
-        end
-        inc = out - out_old; 
-        if inc > inc_old
+        else
             out = uint8(0);
             return
-        end      
+        end
+        
+        if inc > inc_old
+            inc
+            inc_old
+            out = uint8(0);
+            return
+        end
+        inc_old = inc; 
     end
     
     if out > 20
