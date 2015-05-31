@@ -1,4 +1,8 @@
 function [indices] = saddle(M)
+% Purpose: Finds saddle points in M, defined as element whose value is 
+% greater or equal to every element in its row, less than or equal to 
+% every element in its column. 
+% Written by: Jessie Ye (junzhiye57@gmail.com)
     [r c] = size(M); 
 
     indices = []; 

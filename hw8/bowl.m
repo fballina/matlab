@@ -1,4 +1,7 @@
 function [score] = bowl(in)
+% Purpose: North American bowling - takes a vector of integers specifying 
+% the sequence of pins down after each ball and returns the final score. 
+% Written by: Jessie Ye (junzhiye57@gmail.com)
     sequence = in;     
     score = 0; 
     frame = 0; 

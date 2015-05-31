@@ -1,4 +1,6 @@
 function [out] = sparse_array_in(infile)
+% Purpose: Reads array of doubles from binary file, returns array 
+% Written by: Jessie Ye (junzhiye57@gmail.com)
     fileID = fopen(infile);
     if fileID == -1
         out = [];

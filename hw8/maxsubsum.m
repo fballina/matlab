@@ -1,5 +1,6 @@
 function [row,col,numrows,numcols,summa] = maxsubsum(A)
-
+% Purpose: Finds submatrix of A that has the maximum sum 
+% Written by: Jessie Ye (junzhiye57@gmail.com)
     if isscalar(A)
         row = 1; 
         col = 1; 

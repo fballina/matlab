@@ -1,4 +1,6 @@
 function [out] = sparse_array_out(a, outfile) 
+% Purpose: Writes array to binary file 
+% Written by: Jessie Ye (junzhiye57@gmail.com)
     fileID = fopen(outfile, 'w');
     if fileID == -1
         out = 0;

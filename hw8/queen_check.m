@@ -1,5 +1,6 @@
 function [out] = queen_check(board)
-
+% Purpose: Returns true if no queens threaten each other 
+% Written by: Jessie Ye (junzhiye57@gmail.com)
     q = find(board==1);
     [i,j] = ind2sub(size(board),q);
     if length(unique(i)) < length(i) || length(unique(j)) < length(j)
