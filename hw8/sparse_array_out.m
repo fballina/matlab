@@ -9,7 +9,7 @@ function [out] = sparse_array_out(a, outfile)
     
     [r c] = size(a);
     nz = nnz(a);
-    vec = [r c nz]
+    vec = [r c nz];
     fwrite(fileID, vec, 'uint32');
     
     for i = 1:r 
@@ -20,8 +20,6 @@ function [out] = sparse_array_out(a, outfile)
             end
         end
     end
-    
-    
     fclose(fileID); 
 end
     

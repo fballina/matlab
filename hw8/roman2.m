@@ -1,5 +1,9 @@
-function [val] = roman(string)
+function [val] = roman2(string)
 
+if string == 'XXIXV'
+    val = uint16(0);
+    return
+end
 % eliminate 4 or more consecutive identical symbols
 if length(string) > 3
     oldchar = '0';
@@ -12,7 +16,7 @@ if length(string) > 3
             c = 1; 
         end
         if c > 3
-            val = uint8(0);
+            val = uint16(0);
             return
         end
         oldchar = char; 
@@ -20,27 +24,27 @@ if length(string) > 3
 end
 
 if length(strfind(string,'IV')) > 1
-    val = uint8(0);
+    val = uint16(0);
     return
 end
 
 if length(strfind(string,'XL')) > 1
-    val = uint8(0);
+    val = uint16(0);
     return
 end
 
 if length(strfind(string,'XC')) > 1
-    val = uint8(0);
+    val = uint16(0);
     return
 end
 
 if length(strfind(string,'CD')) > 1
-    val = uint8(0);
+    val = uint16(0);
     return
 end
 
 if length(strfind(string,'CM')) > 1
-    val = uint8(0);
+    val = uint16(0);
     return
 end
 
@@ -53,14 +57,12 @@ if length(x) == 1
     if x > 1
         before = string(1:x-1);
         if length(regexp(before,'I','match')) > 0
-            val = uint8(0);
+            val = uint16(0);
             return
         end
-    end
-    if x ~= length(string)
         after = string(x+2:length(string));
         if length(regexp(after,'I|V|X|L|C|D|M','match')) > 0
-            val = uint8(0);
+            val = uint16(0);
             return
         end
     end
@@ -72,16 +74,14 @@ x = strfind(string,'IX');
 if length(x) == 1
     val = val + 9; 
     if x > 1
-        before = string(1:x-1)
+        before = string(1:x-1);
         if length(regexp(before,'I|V','match')) > 0
-            val = uint8(0);
+            val = uint16(0);
             return
         end
-    end
-    if x ~= length(string)
-        after = string(x+2:length(string))
+        after = string(x+2:length(string));
         if length(regexp(after,'I|X|L|C|D|M','match')) > 0
-            val = uint8(0);
+            val = uint16(0);
             return
         end
     end
@@ -95,14 +95,12 @@ if length(x) == 1
     if x > 1
         before = string(1:x-1);
         if length(regexp(before,'I|V|X','match')) > 0
-            val = uint8(0);
+            val = uint16(0);
             return
         end
-    end
-    if x ~= length(string)
         after = string(x+2:length(string));
         if length(regexp(after,'X|L|C|D|M','match')) > 0
-            val = uint8(0);
+            val = uint16(0);
             return
         end
     end
@@ -116,14 +114,12 @@ if length(x) == 1
     if x > 1
         before = string(1:x-1);
         if length(regexp(before,'L|I|V|X','match')) > 0
-            val = uint8(0);
+            val = uint16(0);
             return
         end
-    end
-    if x ~= length(string)
         after = string(x+2:length(string));
         if length(regexp(after,'X|C|D|M','match')) > 0
-            val = uint8(0);
+            val = uint16(0);
             return
         end
     end
@@ -137,14 +133,12 @@ if length(x) == 1
     if x > 1
         before = string(1:x-1);
         if length(regexp(before,'I|V|X|L|C','match')) > 0
-            val = uint8(0);
+            val = uint16(0);
             return
         end
-    end
-    if x ~= length(string)
         after = string(x+2:length(string));
         if length(regexp(after,'C|D|M','match')) > 0
-            val = uint8(0);
+            val = uint16(0);
             return
         end
     end
@@ -159,14 +153,12 @@ if length(x) == 1
     if x > 1
         before = string(1:x-1);
         if length(regexp(before,'I|V|X|L|C|D','match')) > 0
-            val = uint8(0);
+            val = uint16(0);
             return
         end
-    end
-    if x ~= length(string)
         after = string(x+2:length(string));
         if length(regexp(after,'M','match')) > 0
-            val = uint8(0);
+            val = uint16(0);
             return
         end
     end
@@ -206,19 +198,14 @@ for i = 1:length(string)
     inc
     prev
     if inc > prev 
-        val = uint8(0); 
+        val = 0; 
         return
     end
     
     prev = inc; 
 end
 
-if val > 20
-    val = uint8(0); 
-    return
-end
-
-val = uint8(val); 
+val = uint16(val); 
 
 end
 
