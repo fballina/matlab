@@ -1,8 +1,8 @@
-Instructions:
+---------------------------------------------------------------
+Scripts for Coursera's Introduction to Programming with MATLAB
+---------------------------------------------------------------
 
-Solve each problem in MATLAB. Make sure to name your solutions (that is, your M-files) as instructed in each problem.
-Download the grader (hw#.p) and save it in the same folder as your solution files.
+Save the grader hw#.p in the same folder as the solution files.
 Run the grader in MATLAB by typing the command: hw#
-To get the score for your submission, select to grade "all problems" (you also have the option to test your solution for a specific problem).
 
-Repo files written by: Jessie Ye (junzhiye57@gmail.com). 
+Author: Jessie Ye (junzhiye57@gmail.com)
